@@ -1,0 +1,15 @@
+{% extends "mainpage/layout.html" %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+    <h1>ALLAH</h1>
+    {% for question in questions %}
+        <div class="container">
+            <h1>{{ question.title }}</h1>
+            <p>{{ question.description }}</p>
+        </div>
+    {% endfor %}
+
+{% endblock %}
