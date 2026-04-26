@@ -1,0 +1,15 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Test</title>
+    <link rel="stylesheet" href="{% static 'mainpage/css/mainpage.css' %}">
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
