@@ -5,11 +5,23 @@
 
 {% block content %}
     <h1>ALLAH</h1>
-    {% for question in questions %}
         <div class="container">
-            <h1>{{ question.title }}</h1>
-            <p>{{ question.description }}</p>
+            <h1>{{ questions.title }}</h1>
+            <p>{{ questions.description }}</p>
+            {{ character.name }}: {{ character.social_life }}, {{ character.grade }}, {{ character.dependence }}
+            <form method="post">
+                {% csrf_token %} 
+                {% for decisions in decisions %}
+                    {% if decisions.is_available %}
+                        <br> 
+                        <button type="submit" value="{{ decisions.social_life }}, {{ decisions.grade }}, {{ decisions.dependence }}" name="button">
+                            {{ decisions.title }}
+                            {{ decisions.minimal_value_for_social_life }}
+                            {{ decisions.minimal_value_for_grade }}
+                            {{ decisions.minimal_value_for_dependence }}
+                        </button>
+                    {% endif %}
+                {% endfor %}    
+            </form>
         </div>
-    {% endfor %}
-
 {% endblock %}

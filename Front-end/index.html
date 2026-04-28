@@ -1,9 +1,26 @@
-{% extends "mainpage/layout.html" %}
-{% load static %}
-{% load i18n %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
 
-{% block content %}
-    <link rel="stylesheet" href="{% static 'mainpage/css/index.css' %}">
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains Mono:wght@400;700&display=swap"
+    />
+  </head>
+  <body>
+
+  <svg style="display: none;">
+    <defs>
+      <filter id="pixel-glitch">
+        <feTurbulence type="fractalNoise" baseFrequency="0.00001 0.1" numOctaves="1" result="warp" />
+        <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="80" in="SourceGraphic" in2="warp" />
+      </filter>
+    </defs>
+  </svg>
 
   <div class="pixel-loader"></div>
 
@@ -48,12 +65,18 @@
           </div>
           <div class="auto-layout17">
             <div class="auto-layout18">
-              <form method="post">
-                {% csrf_token %} 
-                <button class="auto-layout19" type="submit">
-                  <div class="new-quest">NEW QUEST</div>
-                </button>
-              </form>
+              <button class="auto-layout19">
+                <div class="new-quest">NEW QUEST</div>
+              </button>
+              <button class="auto-layout20">
+                <div class="new-quest">LOAD SAVE</div>
+              </button>
+              <button class="auto-layout21">
+                <div class="new-quest">SETTINGS</div>
+              </button>
+              <button class="auto-layout22">
+                <div class="new-quest">QUIT</div>
+              </button>
             </div>
           </div>
         </section>
@@ -70,12 +93,15 @@
             </div>
           </div>
           <div class="auto-layout26">
-            <form method="post">
-              {% csrf_token %} 
-              <button class="auto-layout27" type="submit">
-                <div class="new-journey">[NEW JOURNEY]</div>
-              </button>
-            </form>
+            <button class="auto-layout27" id="autoLayout10">
+              <div class="new-journey">[NEW JOURNEY]</div>
+            </button>
+            <button class="auto-layout28">
+              <div class="continue-quest">[CONTINUE QUEST]</div>
+            </button>
+            <button class="auto-layout28">
+              <div class="continue-quest">[LOAD SAVE]</div>
+            </button>
           </div>
         </section>
       </main>
@@ -115,14 +141,13 @@
     </div>
 
     <script>
-      var autoLayout10 = document.getElementById("autoLayout10");
-      if (autoLayout10) {
-        autoLayout10.addEventListener("click", function (e) {
-          // Please sync "Auto layout" to the project
-        });
-      }
-
-      // Початковий час (момент завантаження сторінки)
+var autoLayout10 = document.getElementById("autoLayout10");
+if (autoLayout10) {
+  autoLayout10.addEventListener("click", function (e) {
+    // Please sync "Auto layout" to the project
+  });
+}
+// Початковий час (момент завантаження сторінки)
 const startTime = Date.now();
 
 function updateSessionTime() {
@@ -154,5 +179,7 @@ setInterval(updateSessionTime, 1000);
 
 // Викликаємо один раз відразу, щоб не чекати першу секунду з 00:00:00
 updateSessionTime();
-</script>
-{% endblock %}
+      </script>
+      <script src="js/transitions.js"></script>
+  </body>
+</html>

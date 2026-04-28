@@ -1,0 +1,85 @@
+{% extends "mainpage/layout.html" %}
+{% load static %}
+{% load i18n %}
+
+
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'mainpage/css/info.css' %}">
+
+<div class="pixel-loader"></div>
+    <div class="auto-layout">
+      <main class="auto-layout2">
+        <section class="auto-layout3">
+          <div class="auto-layout4">
+            <div class="auto-layout5">
+              <h3 class="game-name">GAME NAME</h3>
+            </div>
+          </div>
+          <div class="auto-layout6">
+            <div class="auto-layout7">
+              <div class="auto-layout8">
+                <div class="player-profile-status">PLAYER PROFILE STATUS</div>
+              </div>
+              <div class="auto-layout9">
+                <div class="auto-layout5">
+                  <div class="social-ability">SOCIAL ABILITY</div>
+                </div>
+                <div class="auto-layout11">
+                  <div class="social-ability">[INITIALIZING...]</div>
+                </div>
+              </div>
+              <div class="auto-layout9">
+                <div class="auto-layout5">
+                  <div class="social-ability">CURRENT GRADE</div>
+                </div>
+                <div class="auto-layout11">
+                  <div class="social-ability">[INITIALIZING...]</div>
+                </div>
+              </div>
+              <div class="auto-layout9">
+                <div class="auto-layout5">
+                  <div class="social-ability">AI DEPENDENCE</div>
+                </div>
+                <div class="auto-layout11">
+                  <div class="social-ability">[INITIALIZING...]</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <main class="auto-layout18">
+          <div class="auto-layout19">
+            <div class="auto-layout20">
+              <div class="system-initialization">
+                {{ questions.title }}
+              </div>
+            </div>
+          </div>
+          <div class="auto-layout21">
+            <div class="auto-layout5">
+              <div class="lorem-ipsum-dolor">
+                {{ questions.description }}
+              </div>
+            </div>
+          </div>
+          <footer class="auto-layout25">
+            <form method="post">
+              {% csrf_token %} 
+              <button class="auto-layout26" type="submit" value="start_new_quest">
+                <div class="begin">[BEGIN]</div>
+              </button>
+          </footer>
+        </main>
+      </main>
+    </div>
+
+    <script>
+      var autoLayout4 = document.getElementById("autoLayout4");
+      if (autoLayout4) {
+        autoLayout4.addEventListener("click", function (e) {
+          // Please sync "Auto layout" to the project
+        });
+      }
+      </script>
+{% endblock %}

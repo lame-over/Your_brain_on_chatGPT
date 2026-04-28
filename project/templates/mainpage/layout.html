@@ -5,8 +5,22 @@
 <head>
     <meta charset="UTF-8">
     
-    <title>Test</title>
-    <link rel="stylesheet" href="{% static 'mainpage/css/mainpage.css' %}">
+    <title>Your Brain on ChatGPT</title>
+    <link rel="stylesheet" href="{% static 'mainpage/css/global.css' %}">
+    <script src="{% static 'mainpage/js/transitions.js' %}"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains Mono:wght@400;700&display=swap"
+    />
+    <svg style="display: none;">
+  <defs>
+    <filter id="pixel-glitch">
+      <feTurbulence type="fractalNoise" baseFrequency="0.00001 0.1" numOctaves="1" result="warp" />
+      <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="80" in="SourceGraphic" in2="warp" />
+    </filter>
+  </defs>
+</svg>
+
 </head>
 <body>
     {% block content %}

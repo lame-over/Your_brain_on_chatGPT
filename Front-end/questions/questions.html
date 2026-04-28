@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="../global.css" />
+    <link rel="stylesheet" href="./questions.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap"/>
+
+
+    <style>
+      /* ── Typewriter ── */
+      .homework-assignment-in,
+      .it-was-getting {
+        visibility: hidden;
+      }
+
+      /* курсор після символу */
+      .typewriter-cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1em;
+        background: var(--color-orange-56);
+        margin-left: 2px;
+        vertical-align: text-bottom;
+        animation: blink-cursor 0.7s step-end infinite;
+      }
+      @keyframes blink-cursor {
+        0%, 100% { opacity: 1; }
+        50%       { opacity: 0; }
+      }
+
+      /* ── Choices wave-in ── */
+      .auto-layout28 {
+        visibility: hidden;
+      }
+      .auto-layout28 > * {
+        opacity: 0;
+        transform: translateY(32px);
+        transition: opacity 0.35s ease, transform 0.35s ease;
+      }
+      .auto-layout28 > *.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="auto-layout">
+      <main class="auto-layout2">
+        <section class="auto-layout3">
+          <div class="auto-layout4">
+            <div class="auto-layout5">
+              <h3 class="game-name">GAME NAME</h3>
+            </div>
+          </div>
+          <div class="auto-layout6">
+            <div class="auto-layout5">
+              <div class="auto-layout8">
+                <div class="auto-layout5">
+                  <div class="social-ability">SOCIAL ABILITY</div>
+                </div>
+                <div class="auto-layout10">
+                  <b class="connected">CONNECTED</b>
+                </div>
+              </div>
+              <div class="auto-layout8">
+                <div class="auto-layout5">
+                  <div class="social-ability">CURRENT GRADE</div>
+                </div>
+                <div class="auto-layout13">
+                  <b class="connected"></b>
+                </div>
+              </div>
+              <div class="auto-layout8">
+                <div class="auto-layout5">
+                  <div class="social-ability">AI DEPENDENCE</div>
+                </div>
+                <div class="auto-layout16">
+                  <b class="connected">LOW</b>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="auto-layout17">
+            <div class="auto-layout18">
+              <button class="auto-layout19">
+                <div class="history">HISTORY</div>
+              </button>
+              <button class="auto-layout19">
+                <div class="history">MENU</div>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <main class="main">
+          <div class="auto-layout-parent">
+            <div class="auto-layout21">
+              <div class="auto-layout22">
+                <div class="homework-assignment-in" id="title-text">
+                  1.0 HOMEWORK ASSIGNMENT IN A TIME CRUNCH
+                </div>
+              </div>
+            </div>
+            <div class="frame">
+              <div class="auto-layout23">
+                <div class="auto-layout5">
+                  <div class="it-was-getting" id="body-text">
+                    It was getting late on a Friday night. The sun was already
+                    beginning to set and you and your roommate were getting
+                    ready to go out to an event.
+                    It was getting late on a Friday night. The sun was already
+                    beginning to set and you and your roommate were getting
+                    ready to go out to an event.
+                    It was getting late on a Friday night. The sun was already
+                    beginning to set and you and your roommate were getting
+                    ready to go out to an event.
+                    It was getting late on a Friday night. The sun was already
+                    beginning to set and you and your roommate were getting
+                    ready to go out to an event.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="auto-layout28" id="choices">
+            <button class="auto-layout29">
+              <b class="b">►</b>
+              <div class="auto-layout30">
+                <div class="b">
+                  Tell your roommate to go without you to the event, you are
+                  going to stay to finish the assignment
+                </div>
+              </div>
+            </button>
+            <button class="auto-layout31" id="autoLayout5">
+              <b class="b">►</b>
+              <div class="b">
+                Turn in what you have for the assignment and go to the event
+              </div>
+            </button>
+            <div class="auto-layout32">
+              <b class="x">X</b>
+              <div class="auto-layout33">
+                <div class="accept-the-assignment">
+                  Accept the assignment will just be late and go to the event
+                </div>
+                <div class="auto-layout34">
+                  <div class="x">[REQUIRES: LOW GRADE ANXIETY]</div>
+                </div>
+              </div>
+            </div>
+            <button class="auto-layout29">
+              <b class="b">►</b>
+              <div class="auto-layout36">
+                <div class="b">
+                  Use a website your roommate recommended to complete the
+                  assignment and go to the event
+                </div>
+              </div>
+            </button>
+          </div>
+        </main>
+      </main>
+    </div>
+
+    <script>
+      /* ───────────────────────────────────────────
+         Звук клавіші — Web Audio API (не потрібні файли)
+         Тепер використовується з першого символу друку
+      ─────────────────────────────────────────── */
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      let audioUnlocked = false;
+
+      // Функція для розблокування AudioContext (браузери вимагають взаємодії користувача)
+      function unlockAudioContext() {
+        if (audioUnlocked) return;
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume().then(() => {
+            console.log('AudioContext resumed');
+            audioUnlocked = true;
+          });
+        } else {
+          audioUnlocked = true;
+        }
+      }
+
+      function playKeyClick() {
+        // Автоматичне розблокування при першому відтворенні
+        if (!audioUnlocked) {
+          unlockAudioContext();
+        }
+        
+        // Створюємо короткий звук клацання
+        try {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          
+          const now = audioCtx.currentTime;
+          osc.type = 'square';
+          osc.frequency.setValueAtTime(620, now);
+          osc.frequency.exponentialRampToValueAtTime(180, now + 0.04);
+          
+          gain.gain.setValueAtTime(0.09, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+          
+          osc.start(now);
+          osc.stop(now + 0.05);
+        } catch(e) {
+          // Ігноруємо помилки, якщо звук ще не готовий
+          console.warn("Play sound error:", e);
+        }
+      }
+
+      // Також розблоковуємо звук при будь-якій взаємодії зі сторінкою (клік, клавіша)
+      window.addEventListener('click', unlockAudioContext);
+      window.addEventListener('keydown', unlockAudioContext);
+      
+      // Спеціально для анімації типу Typewriter - розблоковуємо і відтворюємо перший звук при старті
+      function unlockAndPlayFirstSound() {
+        unlockAudioContext();
+        playKeyClick();
+      }
+
+      /* ───────────────────────────────────────────
+         Typewriter з негайним звуком
+         el        — DOM-елемент
+         text      — рядок для друку
+         speed     — мс на символ
+         onDone    — колбек після завершення
+      ─────────────────────────────────────────── */
+      function typewriter(el, text, speed, onDone) {
+        el.style.visibility = 'visible';
+        el.textContent = '';
+
+        const cursor = document.createElement('span');
+        cursor.className = 'typewriter-cursor';
+        el.appendChild(cursor);
+
+        let i = 0;
+        // Звук на кожен символ клавіші, починаючи з першого
+        const soundEvery = 2; // 1 = кожен символ, 2 = кожен другий
+
+        function tick() {
+          if (i < text.length) {
+            const char = text[i];
+            el.insertBefore(document.createTextNode(char), cursor);
+            
+            // Відтворюємо звук для кожного символу (крім пробілів для оптимізації)
+            if (char !== ' ' && i % soundEvery === 0) {
+              playKeyClick();
+            }
+            
+            i++;
+            setTimeout(tick, speed);
+          } else {
+            cursor.remove();
+            if (onDone) onDone();
+          }
+        }
+        
+        // Запускаємо перший звук анімації одразу
+        unlockAndPlayFirstSound();
+        tick();
+      }
+
+      /* ───────────────────────────────────────────
+         Wave-in для варіантів відповідей
+      ─────────────────────────────────────────── */
+      function showChoices() {
+        const wrap = document.getElementById('choices');
+        wrap.style.visibility = 'visible';
+
+        const items = wrap.querySelectorAll(':scope > *');
+        items.forEach((item, idx) => {
+          setTimeout(() => {
+            item.classList.add('visible');
+          }, idx * 120);
+        });
+      }
+
+      /* ───────────────────────────────────────────
+         Запуск при завантаженні
+      ─────────────────────────────────────────── */
+      window.addEventListener('DOMContentLoaded', () => {
+        const titleEl = document.getElementById('title-text');
+        const bodyEl  = document.getElementById('body-text');
+
+        const titleText = titleEl.textContent.trim();
+        const bodyText  = bodyEl.textContent.replace(/\s+/g, ' ').trim();
+
+        // Друкуємо заголовок зі швидкістю 40мс/символ та звуком одразу
+        typewriter(titleEl, titleText, 40, () => {
+          // Невелика пауза після заголовка, потім текст питання
+          setTimeout(() => {
+            typewriter(bodyEl, bodyText, 18, () => {
+              // Після тексту — хвиля варіантів
+              setTimeout(showChoices, 300);
+            });
+          }, 300);
+        });
+      });
+
+      /* ───────────────────────────────────────────
+         Існуючий обробник кліку (залишено без змін)
+      ─────────────────────────────────────────── */
+      var autoLayout5 = document.getElementById("autoLayout5");
+      if (autoLayout5) {
+        autoLayout5.addEventListener("click", function (e) {
+          // Please sync "Auto layout" to the project
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -5,4 +5,5 @@ from .views import *
 
 urlpatterns = [
     path('', views.questions, name='questions'),
+    path('ending/', views.ending, name='ending'),
 ]

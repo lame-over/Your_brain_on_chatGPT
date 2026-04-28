@@ -19,6 +19,7 @@ class Decision(models.Model):
     question_index = models.ForeignKey(Question, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True, null=True)
+
     social_life = models.IntegerField(blank=True, null=True)
     grade = models.IntegerField(blank=True, null=True)
     dependence = models.IntegerField(blank=True, null=True)
@@ -26,6 +27,8 @@ class Decision(models.Model):
     minimal_value_for_grade = models.IntegerField(blank=True, null=True)
     minimal_value_for_social_life = models.IntegerField(blank=True, null=True)
     minimal_value_for_dependence = models.IntegerField(blank=True, null=True)
+
+    is_available = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

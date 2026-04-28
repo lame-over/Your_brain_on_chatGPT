@@ -1,0 +1,13 @@
+{% extends "mainpage/layout.html" %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+    <h1>ALLAH</h1>
+        <div class="container">
+            {{ character.name }}: {{ character.social_life }}, {{ character.grade }}, {{ character.dependence }}
+            <p>{{ endings.title }}</p>
+            <p>{{ endings.description }}</p>
+        </div>
+{% endblock %}
